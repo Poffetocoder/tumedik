@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Medik — Entiende tus exámenes. Cuida tu salud.</title>
+<meta name="description" content="Sube tu examen de laboratorio y obtén en segundos análisis claro, gráficos con rangos de referencia y un plan de acción. Sin esperar al médico.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#1D9E75;--gd:#0d7a5a;--gl:#e6f7f1;--gm:#9FE1CB;
+  --ink:#111210;--ink2:#444240;--ink3:#888580;
+  --paper:#faf9f6;--white:#ffffff;--bd:#e6e4dd;
+  --am:#c07a10;--re:#d94646;
+  --ff:'Georgia','Times New Roman',serif;
+  --fs:-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fs);background:var(--paper);color:var(--ink);line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(250,249,246,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--bd);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nb{display:flex;align-items:center;gap:9px}
+.nl{width:30px;height:30px;border-radius:8px;background:var(--g);display:flex;align-items:center;justify-content:center}
+.nl svg{width:16px;height:16px}
+.nn{font-size:16px;font-weight:800;letter-spacing:-.04em;color:var(--ink)}
+.nn span{color:var(--g)}
+.nv{display:flex;align-items:center;gap:28px}
+.nv a{font-size:14px;color:var(--ink2);transition:color .15s}
+.nv a:hover{color:var(--ink)}
+.nc{padding:8px 20px;font-size:14px;font-weight:700;background:var(--g);color:#fff;border-radius:100px;transition:background .15s}
+.nc:hover{background:var(--gd)}
+
+.hero{max-width:800px;margin:0 auto;padding:7rem 2rem 5rem;text-align:center}
+.ey{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g);background:var(--gl);padding:5px 14px;border-radius:100px;margin-bottom:1.5rem}
+.eyd{width:6px;height:6px;border-radius:50%;background:var(--g);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero h1{font-family:var(--ff);font-size:clamp(36px,6vw,66px);font-weight:400;line-height:1.08;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:italic;color:var(--g)}
+.hero p{font-size:18px;color:var(--ink2);max-width:520px;margin:0 auto 2.5rem;line-height:1.7}
+.hc{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.bp{padding:14px 32px;font-size:15px;font-weight:700;background:var(--g);color:#fff;border-radius:100px;transition:background .15s,transform .1s;display:inline-flex;align-items:center;gap:8px}
+.bp:hover{background:var(--gd);transform:translateY(-1px)}
+.bs{padding:14px 28px;font-size:15px;font-weight:500;background:transparent;color:var(--ink);border:1.5px solid var(--bd);border-radius:100px;transition:border-color .15s,background .15s}
+.bs:hover{border-color:var(--ink3);background:var(--white)}
+.hn{font-size:12px;color:var(--ink3);margin-top:1rem}
+
+.mw{max-width:920px;margin:0 auto;padding:0 2rem 5rem}
+.mb{background:var(--white);border:1px solid var(--bd);border-radius:18px;overflow:hidden;box-shadow:0 28px 72px rgba(0,0,0,.11),0 4px 12px rgba(0,0,0,.05)}
+.bb{background:#f5f4f0;border-bottom:1px solid var(--bd);padding:10px 16px;display:flex;align-items:center;gap:10px}
+.bds{display:flex;gap:5px}
+.bd2{width:10px;height:10px;border-radius:50%}
+.bu{flex:1;background:var(--white);border:1px solid var(--bd);border-radius:6px;padding:4px 10px;font-size:11px;color:var(--ink3);text-align:center}
+.ms{display:flex;min-height:360px}
+.msb{width:200px;flex-shrink:0;background:#faf9f7;border-right:1px solid var(--bd);padding:14px 12px}
+.mlo{display:flex;align-items:center;gap:6px;margin-bottom:14px}
+.mli{width:20px;height:20px;border-radius:5px;background:var(--g);display:flex;align-items:center;justify-content:center}
+.mlt{font-size:12px;font-weight:800;color:var(--ink);letter-spacing:-.03em}
+.mlt span{color:var(--g)}
+.mec{border:1px solid var(--bd);border-radius:7px;padding:8px 10px;margin-bottom:6px}
+.mec.act{border-color:var(--g);background:var(--gl)}
+.med{font-size:10px;font-weight:600;color:var(--ink)}
+.men{font-size:9px;color:var(--ink3);margin-top:1px}
+.mbg{display:inline-block;font-size:8px;padding:1px 5px;border-radius:20px;margin-top:4px;font-weight:600}
+.mm{flex:1;padding:16px 20px}
+.mt{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.msu{font-size:9px;color:var(--ink3);margin-bottom:10px}
+.msem{display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:6px;background:#edf9f4;border:1.5px solid var(--gm);margin-bottom:12px}
+.mdt{width:8px;height:8px;border-radius:50%;background:var(--g)}
+.mst{font-size:9px;font-weight:600;color:var(--gd)}
+.mca{display:flex;gap:8px}
+.mcb{flex:1;background:#faf9f7;border:1px solid var(--bd);border-radius:7px;padding:8px 10px}
+.mcl{font-size:9px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.mbw{position:relative;height:24px;background:#f0efe9;border-radius:4px;overflow:hidden}
+.mbr{position:absolute;height:100%;background:rgba(29,158,117,.15)}
+.mbv{position:absolute;height:100%;border-radius:4px;opacity:.85}
+.mbl{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;padding:0 2px}
+.mbl2{width:1px;height:80%}
+.mrf{font-size:7.5px;color:var(--ink3);margin-top:3px}
+
+.lg{padding:3rem 2rem;text-align:center;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.lg p{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-bottom:1.5rem}
+.lgr{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;opacity:.4}
+.lgr span{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+
+.sec{max-width:900px;margin:0 auto;padding:5rem 2rem}
+.scy{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g);margin-bottom:.75rem}
+.sct{font-family:var(--ff);font-size:clamp(28px,4vw,44px);font-weight:400;letter-spacing:-.02em;margin-bottom:.75rem;line-height:1.2}
+.scs{font-size:16px;color:var(--ink2);max-width:500px;line-height:1.7}
+
+.stps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:3rem}
+.stp{padding:1.5rem;background:var(--white);border:1px solid var(--bd);border-radius:16px}
+.stn{width:36px;height:36px;border-radius:50%;background:var(--gl);color:#085041;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;margin-bottom:1rem}
+.stp h3{font-size:15px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
+.stp p{font-size:13px;color:var(--ink2);line-height:1.6}
+
+.fts{max-width:900px;margin:0 auto;padding:0 2rem 5rem}
+.ftg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:3rem}
+.ft{padding:1.5rem;border:1px solid var(--bd);border-radius:16px;transition:border-color .15s,transform .15s}
+.ft:hover{border-color:var(--gm);transform:translateY(-2px)}
+.fi{font-size:24px;margin-bottom:10px;line-height:1}
+.ft h3{font-size:14px;font-weight:700;margin-bottom:5px}
+.ft p{font-size:13px;color:var(--ink2);line-height:1.6}
+
+.pr{max-width:900px;margin:0 auto;padding:0 2rem 5rem}
+.prg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:3rem}
+.pl{padding:1.75rem;background:var(--white);border:1px solid var(--bd);border-radius:16px;display:flex;flex-direction:column}
+.pl.ft2{border:2px solid var(--g);position:relative}
+.plb{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;font-size:11px;font-weight:700;padding:3px 14px;border-radius:100px;white-space:nowrap}
+.pln{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink2);margin-bottom:8px}
+.plp{font-family:var(--ff);font-size:36px;font-weight:400;letter-spacing:-.03em;margin-bottom:4px}
+.plp span{font-size:14px;font-family:var(--fs);color:var(--ink3)}
+.pld{font-size:12px;color:var(--ink3);margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--bd)}
+.plf{list-style:none;flex:1;margin-bottom:1.5rem}
+.plf li{font-size:13px;color:var(--ink2);padding:5px 0;display:flex;gap:8px;align-items:flex-start}
+.plf li::before{content:'✓';color:var(--g);font-weight:700;flex-shrink:0;margin-top:1px}
+.plf li.off::before{content:'—';color:var(--ink3)}
+.plf li.off{color:var(--ink3)}
+.plbt{width:100%;padding:11px;font-size:14px;font-weight:700;border-radius:100px;cursor:pointer;transition:all .15s;border:1.5px solid var(--bd);background:transparent;color:var(--ink)}
+.plbt:hover{border-color:var(--ink)}
+.pl.ft2 .plbt{background:var(--g);color:#fff;border-color:var(--g)}
+.pl.ft2 .plbt:hover{background:var(--gd)}
+
+.ts{background:var(--ink);padding:5rem 2rem}
+.tsi{max-width:900px;margin:0 auto}
+.ts .scy{color:var(--gm)}
+.ts .sct{color:var(--white)}
+.tsg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:3rem}
+.tc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:1.5rem}
+.tx{font-size:14px;color:rgba(255,255,255,.78);line-height:1.7;margin-bottom:1rem;font-style:italic}
+.ta{display:flex;align-items:center;gap:10px}
+.tav{width:32px;height:32px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
+.tn{font-size:13px;font-weight:600;color:#fff}
+.tr{font-size:11px;color:rgba(255,255,255,.4)}
+
+.fq{max-width:680px;margin:0 auto;padding:5rem 2rem}
+.fqi{border-bottom:1px solid var(--bd);padding:1.25rem 0;cursor:pointer}
+.fqq{display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;gap:12px}
+.fqq span{flex:1}
+.fqt{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--ink2);flex-shrink:0;transition:all .15s}
+.fqi.open .fqt{background:var(--g);border-color:var(--g);color:#fff;transform:rotate(45deg)}
+.fqa{font-size:14px;color:var(--ink2);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .2s}
+.fqi.open .fqa{max-height:200px;margin-top:.75rem}
+
+.fc{background:var(--g);padding:6rem 2rem;text-align:center}
+.fc h2{font-family:var(--ff);font-size:clamp(28px,4vw,50px);font-weight:400;color:#fff;margin-bottom:1rem;letter-spacing:-.02em;line-height:1.15}
+.fc p{font-size:16px;color:rgba(255,255,255,.82);margin-bottom:2rem;max-width:440px;margin-left:auto;margin-right:auto}
+.bw{padding:15px 38px;font-size:15px;font-weight:700;background:#fff;color:var(--g);border-radius:100px;transition:opacity .15s,transform .1s;display:inline-block}
+.bw:hover{opacity:.93;transform:translateY(-1px)}
+
+footer{background:var(--ink);padding:3rem 2rem}
+.fi2{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fbr{display:flex;align-items:center;gap:8px}
+.flo{width:26px;height:26px;border-radius:7px;background:var(--g);display:flex;align-items:center;justify-content:center}
+.flo svg{width:14px;height:14px}
+.fna{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.04em}
+.fna span{color:var(--g)}
+.flk{display:flex;gap:20px;flex-wrap:wrap}
+.flk a{font-size:12px;color:rgba(255,255,255,.4);transition:color .15s}
+.flk a:hover{color:rgba(255,255,255,.7)}
+.fds{width:100%;font-size:11px;color:rgba(255,255,255,.22);padding-top:.75rem;border-top:1px solid rgba(255,255,255,.07);margin-top:.75rem;max-width:900px}
+
+@media(max-width:640px){
+  nav{padding:0 1rem}.nv{display:none}
+  .hero{padding:4rem 1.25rem 3rem}
+  .sec,.fts,.pr,.fq{padding-left:1.25rem;padding-right:1.25rem}
+  .mw{padding-left:1rem;padding-right:1rem}
+  .msb{display:none}
+  .fi2{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nb">
+    <div class="nl"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2v5M5.5 4.5h5M4 10h8M4 12.5h5.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    <span class="nn">Tu <span>Medik</span></span>
+  </div>
+  <div class="nv">
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#funcionalidades">Funcionalidades</a>
+    <a href="#precios">Precios</a>
+    <a href="#faq">FAQ</a>
+    <a href="tumedik-app.html" class="nc">Probar gratis →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="ey"><div class="eyd"></div>Inteligencia aplicada a tu salud</div>
+  <h1>Entiende tus exámenes.<br><em>Cuida tu salud.</em></h1>
+  <p>Sube tu examen de laboratorio y obtén en segundos un análisis claro, gráficos con rangos de referencia y un plan de acción concreto. Sin esperar al médico.</p>
+  <div class="hc">
+    <a href="tumedik-app.html" class="bp">Analizar mi examen →</a>
+    <a href="#como-funciona" class="bs">Ver cómo funciona</a>
+  </div>
+  <p class="hn">Sin registro · Tus datos no salen de tu dispositivo · Desde $5.990/mes</p>
+</section>
+
+<div class="mw">
+  <div class="mb">
+    <div class="bb">
+      <div class="bds"><div class="bd2" style="background:#ff5f56"></div><div class="bd2" style="background:#ffbd2e"></div><div class="bd2" style="background:#27c93f"></div></div>
+      <div class="bu">tumedik.com/app</div>
+    </div>
+    <div class="ms">
+      <div class="msb">
+        <div class="mlo"><div class="mli"><svg viewBox="0 0 12 12" fill="none"><path d="M6 1v4M4 3h4M3 7.5h6M3 9.5h4" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg></div><span class="mlt">Tu <span>Medik</span></span></div>
+        <div class="mec act"><div class="med">12 abr 2026</div><div class="men">Hemograma completo</div><div><span class="mbg" style="background:#e6f7f1;color:#085041">8 normal</span> <span class="mbg" style="background:#fef3dc;color:#5a3a05">2 alerta</span></div></div>
+        <div class="mec"><div class="med">15 ene 2026</div><div class="men">Perfil lipídico</div><div><span class="mbg" style="background:#e6f7f1;color:#085041">3 normal</span> <span class="mbg" style="background:#fdf0f0;color:#5a1a1a">1 crítico</span></div></div>
+        <div class="mec"><div class="med">3 oct 2025</div><div class="men">Perfil tiroideo</div><div><span class="mbg" style="background:#e6f7f1;color:#085041">4 normal</span></div></div>
+      </div>
+      <div class="mm">
+        <div class="mt">Hemograma completo</div>
+        <div class="msu">12 abr 2026 · 34 años · masculino · hemograma.pdf</div>
+        <div class="msem"><div class="mdt"></div><div class="mst">Sin urgencia — Resultados dentro de parámetros normales, salvo 2 indicadores a monitorear</div></div>
+        <div class="mca">
+          <div class="mcb"><div class="mcl">Hemoglobina (g/dL)</div><div class="mbw"><div class="mbr" style="left:30%;width:50%"></div><div class="mbv" style="left:5%;width:54%;background:#1D9E75"></div><div class="mbl"><div class="mbl2" style="background:rgba(29,158,117,.5)"></div><div class="mbl2" style="background:rgba(29,158,117,.5)"></div></div></div><div class="mrf">Valor: 14.2 · Rango: 13.5–17.5</div></div>
+          <div class="mcb"><div class="mcl">Glucosa (mg/dL)</div><div class="mbw"><div class="mbr" style="left:20%;width:44%"></div><div class="mbv" style="left:5%;width:74%;background:#c07a10"></div><div class="mbl"><div class="mbl2" style="background:rgba(192,122,16,.5)"></div><div class="mbl2" style="background:rgba(192,122,16,.5)"></div></div></div><div class="mrf">Valor: 108 · Rango: 70–100 ⚠</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lg"><p>Compatible con exámenes de</p><div class="lgr"><span>Bupa</span><span>Clínica Las Condes</span><span>Megasalud</span><span>Laboratorio Clínico</span><span>FONASA</span><span>Isapres</span></div></div>
+
+<section class="sec" id="como-funciona">
+  <div class="scy">Cómo funciona</div>
+  <h2 class="sct">De tu examen a un plan de acción<br>en menos de 30 segundos</h2>
+  <p class="scs">Sin tecnicismos. Sin esperar cita. Sin buscar en Google qué significa cada número.</p>
+  <div class="stps">
+    <div class="stp"><div class="stn">1</div><h3>Sube tu examen</h3><p>PDF o imagen de cualquier laboratorio de Latinoamérica. El sistema reconoce todos los formatos automáticamente.</p></div>
+    <div class="stp"><div class="stn">2</div><h3>La IA lo analiza</h3><p>Identifica cada indicador, compara con rangos de referencia según tu edad y sexo, y detecta anomalías al instante.</p></div>
+    <div class="stp"><div class="stn">3</div><h3>Recibe orientación clara</h3><p>Semáforo de urgencia, gráficos con bandas de referencia, especialistas sugeridos y pasos concretos a seguir.</p></div>
+    <div class="stp"><div class="stn">4</div><h3>Monitorea tu evolución</h3><p>Cada examen se agrega al historial. Ve cómo evolucionan tus indicadores en el tiempo con gráficos comparativos.</p></div>
+  </div>
+</section>
+
+<section class="fts" id="funcionalidades">
+  <div class="scy">Funcionalidades</div>
+  <h2 class="sct">Todo lo que necesitas,<br>nada que no necesitas</h2>
+  <div class="ftg">
+    <div class="ft"><div class="fi">📊</div><h3>Gráficos con bandas de referencia</h3><p>Cada indicador se visualiza con su rango normal como banda verde. De un vistazo sabes qué está dentro y qué no.</p></div>
+    <div class="ft"><div class="fi">📈</div><h3>Evolución histórica</h3><p>Compara tus indicadores entre distintas fechas. Ideal para seguimiento de tratamientos o control preventivo anual.</p></div>
+    <div class="ft"><div class="fi">🔴</div><h3>Semáforo de urgencia</h3><p>Verde, amarillo o rojo según la gravedad de tus resultados. Sin interpretaciones ambiguas.</p></div>
+    <div class="ft"><div class="fi">🩺</div><h3>Especialistas sugeridos</h3><p>Indica qué tipo de médico consultar según los hallazgos, ahorrándote tiempo en derivaciones innecesarias.</p></div>
+    <div class="ft"><div class="fi">📄</div><h3>Exportación a PDF</h3><p>Genera un informe limpio y profesional para compartir con tu médico o guardar en tu historial personal.</p></div>
+    <div class="ft"><div class="fi">🔒</div><h3>Privacidad total</h3><p>Tus datos no se almacenan en servidores externos. Todo el historial queda solo en tu dispositivo.</p></div>
+  </div>
+</section>
+
+<section class="pr" id="precios">
+  <div class="scy">Precios</div>
+  <h2 class="sct">Simple y transparente</h2>
+  <div class="prg">
+    <div class="pl">
+      <div class="pln">Gratuito</div><div class="plp">$0</div><div class="pld">Para probar sin compromiso</div>
+      <ul class="plf"><li>2 análisis por mes</li><li>Indicadores con estado</li><li>Plan de acción básico</li><li class="off">Sin historial</li><li class="off">Sin gráficos de evolución</li><li class="off">Sin exportación PDF</li></ul>
+      <button class="plbt" onclick="window.location='tumedik-app.html'">Comenzar gratis</button>
+    </div>
+    <div class="pl ft2">
+      <div class="plb">Más popular</div>
+      <div class="pln">Personal</div><div class="plp">$5.990 <span>/mes</span></div><div class="pld">Para seguimiento individual completo</div>
+      <ul class="plf"><li>Análisis ilimitados</li><li>Historial completo con fechas</li><li>Gráficos con bandas de referencia</li><li>Evolución histórica de indicadores</li><li>Exportación a PDF</li><li>Especialistas sugeridos</li></ul>
+      <button class="plbt">Suscribirse →</button>
+    </div>
+    <div class="pl">
+      <div class="pln">Familiar</div><div class="plp">$11.990 <span>/mes</span></div><div class="pld">Hasta 5 perfiles en una cuenta</div>
+      <ul class="plf"><li>Todo lo del plan Personal</li><li>Hasta 5 perfiles de usuario</li><li>Vista consolidada familiar</li><li>Alertas por indicador crítico</li><li>Soporte prioritario</li></ul>
+      <button class="plbt">Suscribirse →</button>
+    </div>
+  </div>
+</section>
+
+<section class="ts">
+  <div class="tsi">
+    <div class="scy">Testimonios</div>
+    <h2 class="sct">Lo que dicen nuestros usuarios</h2>
+    <div class="tsg">
+      <div class="tc"><div class="tx">"Por fin entiendo mis exámenes de tiroides sin tener que buscar en 10 sitios distintos. El gráfico con la banda verde lo explica todo."</div><div class="ta"><div class="tav">MV</div><div><div class="tn">María V.</div><div class="tr">Profesora, Santiago</div></div></div></div>
+      <div class="tc"><div class="tx">"Subí el hemograma de mi mamá y al tiro me dijo que tenía que ver un hematólogo. El médico confirmó. Me ahorró meses de espera."</div><div class="ta"><div class="tav">CR</div><div><div class="tn">Carlos R.</div><div class="tr">Ingeniero, Concepción</div></div></div></div>
+      <div class="tc"><div class="tx">"El historial es increíble. Puedo ver cómo fue bajando mi colesterol desde que cambié la dieta. Es una motivación enorme verlo en el gráfico."</div><div class="ta"><div class="tav">AP</div><div><div class="tn">Andrea P.</div><div class="tr">Nutricionista, Viña del Mar</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="fq" id="faq">
+  <div class="scy">Preguntas frecuentes</div>
+  <h2 class="sct" style="font-size:28px;margin-bottom:2rem">FAQ</h2>
+  <div class="fqi" onclick="tFaq(this)"><div class="fqq"><span>¿Esto reemplaza al médico?</span><div class="fqt">+</div></div><div class="fqa">No. Tu Medik es una herramienta de orientación informada. Te ayuda a entender tus resultados, priorizar la consulta médica y llegar mejor preparado. El diagnóstico clínico siempre debe hacerlo un profesional de salud.</div></div>
+  <div class="fqi" onclick="tFaq(this)"><div class="fqq"><span>¿Mis datos quedan almacenados en algún servidor?</span><div class="fqt">+</div></div><div class="fqa">No. Tu historial se guarda únicamente en tu navegador (localStorage). No enviamos ni almacenamos tus exámenes en servidores propios. Los archivos se procesan en tiempo real y no se retienen.</div></div>
+  <div class="fqi" onclick="tFaq(this)"><div class="fqq"><span>¿Qué tipos de exámenes analiza?</span><div class="fqt">+</div></div><div class="fqa">Hemograma, bioquímica general, perfil lipídico, perfil tiroideo, glucosa e insulina, orina, marcadores hepáticos, función renal, y la mayoría de los exámenes de laboratorio de rutina.</div></div>
+  <div class="fqi" onclick="tFaq(this)"><div class="fqq"><span>¿Funciona con exámenes de cualquier país de Latinoamérica?</span><div class="fqt">+</div></div><div class="fqa">Sí. El sistema procesa PDFs e imágenes de cualquier laboratorio que entregue resultados por escrito. Probado con formatos de Chile, Colombia, México, Argentina y Perú.</div></div>
+  <div class="fqi" onclick="tFaq(this)"><div class="fqq"><span>¿Puedo cancelar mi suscripción cuando quiera?</span><div class="fqt">+</div></div><div class="fqa">Sí, sin contratos ni períodos mínimos. Puedes cancelar en cualquier momento desde tu perfil y conservarás el acceso hasta el fin del período pagado.</div></div>
+</section>
+
+<section class="fc">
+  <h2>Empieza a entender<br>tu cuerpo hoy</h2>
+  <p>Gratis, sin registro. Sube tu primer examen y obtén tu análisis en segundos.</p>
+  <a href="tumedik-app.html" class="bw">Analizar mi examen →</a>
+</section>
+
+<footer>
+  <div class="fi2">
+    <div class="fbr"><div class="flo"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2v5M5.5 4.5h5M4 10h8M4 12.5h5.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="fna">Tu <span>Medik</span></span></div>
+    <div class="flk"><a href="#">Términos de uso</a><a href="#">Privacidad</a><a href="#">Contacto</a><a href="https://tumedik.com">tumedik.com</a></div>
+    <div class="fds">Tu Medik es una herramienta de orientación médica y no constituye diagnóstico clínico. Siempre consulta con un profesional de salud calificado. © 2026 Tu Medik · tumedik.com</div>
+  </div>
+</footer>
+
+<script>
+function tFaq(el){
+  const o=el.classList.contains('open');
+  document.querySelectorAll('.fqi').forEach(f=>f.classList.remove('open'));
+  if(!o) el.classList.add('open');
+}
+</script>
+</body>
+</html>
