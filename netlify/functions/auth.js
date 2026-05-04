@@ -5,7 +5,7 @@ const SUPABASE_SECRET_KEY = process.env.SUPABASE_SECRET_KEY;
 
 exports.handler = async (event) => {
   const headers = {
-    'Access-Control-Allow-Origin': 'https://tumedik.com',
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Content-Type': 'application/json'
@@ -25,7 +25,6 @@ exports.handler = async (event) => {
       });
       if (error) return { statusCode: 400, headers, body: JSON.stringify({ error: error.message }) };
 
-      // Crear registro en tabla usuarios con plan prueba
       await supabase.from('usuarios').insert({
         id: data.user.id,
         email: email,
@@ -41,7 +40,6 @@ exports.handler = async (event) => {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) return { statusCode: 401, headers, body: JSON.stringify({ error: 'Email o contraseña incorrectos' }) };
 
-      // Obtener datos del usuario
       const { data: usuario } = await supabase
         .from('usuarios')
         .select('*')
@@ -55,7 +53,7 @@ exports.handler = async (event) => {
       })};
     }
 
-    return { statusCode: 400, headers, body: JSON.stringify({ error: 'Acción no válida' }) };
+    return { statusCode: 400, headers, body: JSON.stringify({ error: 'Accion no valida' }) };
 
   } catch (err) {
     return { statusCode: 500, headers, body: JSON.stringify({ error: 'Error interno: ' + err.message }) };
